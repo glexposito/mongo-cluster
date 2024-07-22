@@ -1,0 +1,34 @@
+services:
+  mongo-config-server-1:
+    image: mongo:7
+    container_name: mongo-config-server-1
+    command: mongod --configsvr --replSet mongo-config-server-rs --port 27017 --bind_ip localhost,mongo-config-server-1
+    ports:
+      - "27001:27017"
+    networks:
+      - mongodb-network
+    restart: always
+
+  mongo-config-server-2:
+    image: mongo:7
+    container_name: mongo-config-server-2
+    command: mongod --configsvr --replSet mongo-config-server-rs --port 27017 --bind_ip localhost,mongo-config-server-2
+    ports:
+      - "27002:27017"
+    networks:
+      - mongodb-network
+    restart: always
+
+  mongo-config-server-3:
+    image: mongo:7
+    container_name: mongo-config-server-3
+    command: mongod --configsvr --replSet mongo-config-server-rs --port 27017 --bind_ip localhost,mongo-config-server-3
+    ports:
+      - "27003:27017"
+    networks:
+      - mongodb-network
+    restart: always
+
+networks:
+  mongodb-network:
+    driver: bridge
