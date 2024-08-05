@@ -1,0 +1,24 @@
+services:
+  mongos-router-1:
+    image: mongo:7
+    container_name: mongos-router-1
+    command: mongos --configdb mongo-config-server-rs/mongo-config-server-1:27017,mongo-config-server-2:27017,mongo-config-server-3:27017 --port 27017 --bind_ip localhost,mongos-router-1
+    ports:
+      - "27100:27017"
+    networks:
+      - mongodb-network
+    restart: always
+
+  mongos-router-2:
+    image: mongo:7
+    container_name: mongos-router-2
+    command: mongos --configdb mongo-config-server-rs/mongo-config-server-1:27017,mongo-config-server-2:27017,mongo-config-server-3:27017 --port 27017 --bind_ip localhost,mongos-router-2
+    ports:
+      - "27200:27017"
+    networks:
+      - mongodb-network
+    restart: always
+
+networks:
+  mongodb-network:
+    driver: bridge
