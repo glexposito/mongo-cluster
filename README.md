@@ -19,13 +19,13 @@ To deploy, execute the following command:
 #### Bash
 
 ```shell
-./deploy-cluster.sh
+./deploy.sh
 ```
 
 #### PowerShell
 
 ```shell
-./deploy-cluster.ps1
+./deploy.ps1
 ```
 
 ### MongoDB Setup and Configuration
