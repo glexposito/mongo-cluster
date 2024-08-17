@@ -16,16 +16,16 @@ These instances are set up using Docker containers. In this repository, we creat
 
 To deploy, execute the following command: 
 
-#### Bash
+#### Bash (Linux)
 
 ```shell
-./deploy.sh
+sh deploy.sh
 ```
 
-#### PowerShell
+#### PowerShell (Windows)
 
 ```shell
-./deploy.ps1
+.\deploy.ps1
 ```
 
 ### MongoDB Setup and Configuration
