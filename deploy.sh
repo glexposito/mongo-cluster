@@ -121,9 +121,9 @@ echo
 
 # Connect Shards with mongos
 typewriter "Connecting shards to mongos-router-1..."
-docker exec -it mongos-router-1 mongosh --port 27017 --eval "sh.addShard(\"mongo-shard1-rs/mongo-shard1-1:27017,mongo-shard1-2:27017,mongo-shard1-3:27017\")"
-docker exec -it mongos-router-1 mongosh --port 27017 --eval "sh.addShard(\"mongo-shard2-rs/mongo-shard2-1:27017,mongo-shard2-2:27017,mongo-shard2-3:27017\")"
+docker exec -it mongos-router-1 mongosh "mongodb://localhost:27017" --eval "sh.addShard('mongo-shard1-rs/mongo-shard1-1:27017,mongo-shard1-2:27017,mongo-shard1-3:27017')"
+docker exec -it mongos-router-1 mongosh "mongodb://localhost:27017" --eval "sh.addShard('mongo-shard2-rs/mongo-shard2-1:27017,mongo-shard2-2:27017,mongo-shard2-3:27017')"
 
 typewriter "Connecting shards to mongos-router-2..."
-docker exec -it mongos-router-2 mongosh --port 27017 --eval "sh.addShard(\"mongo-shard1-rs/mongo-shard1-1:27017,mongo-shard1-2:27017,mongo-shard1-3:27017\")"
-docker exec -it mongos-router-2 mongosh --port 27017 --eval "sh.addShard(\"mongo-shard2-rs/mongo-shard2-1:27017,mongo-shard2-2:27017,mongo-shard2-3:27017\")"
+docker exec -it mongos-router-2 mongosh "mongodb://localhost:27017" --eval "sh.addShard('mongo-shard1-rs/mongo-shard1-1:27017,mongo-shard1-2:27017,mongo-shard1-3:27017')"
+docker exec -it mongos-router-2 mongosh "mongodb://localhost:27017" --eval "sh.addShard('mongo-shard2-rs/mongo-shard2-1:27017,mongo-shard2-2:27017,mongo-shard2-3:27017')"
