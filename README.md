@@ -54,17 +54,32 @@ db.employees.createIndex({ "employeeId": 1 }, { name: "employeeId_index", unique
 // Shard the `employees` collection based on `employeeId` with a hashed sharding key
 sh.shardCollection("payroll.employees", { employeeId: "hashed" });
 
-// Insert 10 sample employees
-for (let i = 1; i <= 10; i++) {
-    db.employees.insertOne({
+// Insert 1000 sample employees
+let employees = [];
+for (let i = 1; i <= 1000; i++) {
+    employees.push({
         employeeId: i,
         fullName: "Employee " + i
     });
 }
 
+db.employees.insertMany(employees);
+
 // Verify the shard distribution
 db.employees.getShardDistribution();
 
+```
+
+To connect to specific shard, execute the following command:
+
+```shell
+docker exec -it mongo-shard1-1 mongosh --port 27017
+```
+
+Once connected to the shard, use the following commands to identify the primary node:
+
+```javascript
+rs.status()
 ```
 
 ### Cleanup
