@@ -76,7 +76,7 @@ To connect to specific shard, execute the following command:
 docker exec -it mongo-shard1-1 mongosh --port 27017
 ```
 
-Once connected to the shard, use the following commands to identify the primary node:
+Once connected to the shard, use the following command to identify the primary node:
 
 ```javascript
 rs.status()
